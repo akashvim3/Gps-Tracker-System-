@@ -40,7 +40,7 @@ TrackPro is a professional-grade GPS tracking system website built with HTML, CS
 ### Installation
 
 1. **Clone or Download the Repository**
-git clone https://github.com/akashvim3/trackpro-gps.git
+git clone https://github.com/akashvim3/Gps-Tracker-System-.git
 cd trackpro-gps
 
 2. **File Structure**
