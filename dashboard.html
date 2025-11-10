@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TrackPro GPS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.png" alt="TrackPro Logo">
+                <span>TrackPro</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="devices.html">Devices</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="alerts.html">Alerts</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="user-profile">
+                    <img src="assets/images/gps-icon.png" alt="User">
+                    <span>Akash Vimal</span>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-section">
+                <h3>Active Devices</h3>
+                <div class="device-list" id="device-list">
+                    <div class="device-item active" onclick="selectDevice('device1')">
+                        <div class="device-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="device-info">
+                            <h4>Tesla Model 3</h4>
+                            <p><i class="fas fa-location-dot"></i> Moving • 45 mph</p>
+                        </div>
+                        <div class="device-status online"></div>
+                    </div>
+                    <div class="device-item" onclick="selectDevice('device2')">
+                        <div class="device-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="device-info">
+                            <h4>Delivery Van #12</h4>
+                            <p><i class="fas fa-location-dot"></i> Parked</p>
+                        </div>
+                        <div class="device-status online"></div>
+                    </div>
+                    <div class="device-item" onclick="selectDevice('device3')">
+                        <div class="device-icon">
+                            <i class="fas fa-motorcycle"></i>
+                        </div>
+                        <div class="device-info">
+                            <h4>Yamaha R15</h4>
+                            <p><i class="fas fa-location-dot"></i> Moving • 30 mph</p>
+                        </div>
+                        <div class="device-status online"></div>
+                    </div>
+                    <div class="device-item" onclick="selectDevice('device4')">
+                        <div class="device-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="device-info">
+                            <h4>Personal Tracker</h4>
+                            <p><i class="fas fa-location-dot"></i> Stationary</p>
+                        </div>
+                        <div class="device-status offline"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-section">
+                <h3>Quick Actions</h3>
+                <button class="sidebar-btn"><i class="fas fa-plus"></i> Add Device</button>
+                <button class="sidebar-btn"><i class="fas fa-draw-polygon"></i> Create Geofence</button>
+                <button class="sidebar-btn"><i class="fas fa-bell"></i> Set Alert</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-location-dot"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Active Devices</h4>
+                        <h2>3/4</h2>
+                        <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 25% from last week</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Distance Today</h4>
+                        <h2>248 mi</h2>
+                        <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 12% increase</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Alerts Today</h4>
+                        <h2>8</h2>
+                        <p class="stat-change negative"><i class="fas fa-arrow-down"></i> 3 less than yesterday</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4>Avg. Speed</h4>
+                        <h2>42 mph</h2>
+                        <p class="stat-change neutral"><i class="fas fa-minus"></i> No change</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Container -->
+            <div class="map-container">
+                <div class="map-header">
+                    <h3><i class="fas fa-map"></i> Live Tracking Map</h3>
+                    <div class="map-controls">
+                        <button class="map-btn" onclick="centerMap()"><i class="fas fa-crosshairs"></i> Center</button>
+                        <button class="map-btn" onclick="toggleSatellite()"><i class="fas fa-satellite"></i> Satellite</button>
+                        <button class="map-btn" onclick="toggleTraffic()"><i class="fas fa-traffic-light"></i> Traffic</button>
+                        <button class="map-btn" onclick="fullscreenMap()"><i class="fas fa-expand"></i> Fullscreen</button>
+                    </div>
+                </div>
+                <div id="map"></div>
+                <div class="map-info">
+                    <div class="current-location">
+                        <h4><i class="fas fa-location-crosshairs"></i> Current Location</h4>
+                        <p id="current-address">Loading...</p>
+                        <div class="location-details">
+                            <span><i class="fas fa-compass"></i> Lat: <span id="lat">0.000</span></span>
+                            <span><i class="fas fa-compass"></i> Lng: <span id="lng">0.000</span></span>
+                            <span><i class="fas fa-tachometer-alt"></i> Speed: <span id="speed">0</span> mph</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="activity-container">
+                <h3><i class="fas fa-clock-rotate-left"></i> Recent Activity</h3>
+                <div class="activity-timeline">
+                    <div class="activity-item">
+                        <div class="activity-icon blue">
+                            <i class="fas fa-circle-check"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4>Device Online</h4>
+                            <p>Tesla Model 3 is now online and tracking</p>
+                            <span class="activity-time">2 minutes ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon orange">
+                            <i class="fas fa-triangle-exclamation"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4>Speed Alert</h4>
+                            <p>Delivery Van #12 exceeded 70 mph on I-95</p>
+                            <span class="activity-time">15 minutes ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon green">
+                            <i class="fas fa-location-check"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4>Geofence Entry</h4>
+                            <p>Yamaha R15 entered Downtown Zone</p>
+                            <span class="activity-time">1 hour ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon red">
+                            <i class="fas fa-battery-low"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4>Low Battery</h4>
+                            <p>Personal Tracker battery below 20%</p>
+                            <span class="activity-time">3 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="assets/images/logo1.png" alt="TrackPro">
+                    <span>TrackPro</span>
+                </div>
+                <p>Advanced GPS tracking solutions for vehicles, assets, and people. Real-time monitoring with AI-powered intelligence.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="devices.html">Devices</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Features</h3>
+                <ul>
+                    <li><a href="index.html#features">Real-Time Tracking</a></li>
+                    <li><a href="index.html#features">Geofencing</a></li>
+                    <li><a href="index.html#features">Route History</a></li>
+                    <li><a href="index.html#features">AI Alerts</a></li>
+                    <li><a href="index.html#features">Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="faq.html">Help Center</a></li>
+                    <li><a href="api.html">Documentation</a></li>
+                    <li><a href="api.html">API Reference</a></li>
+                    <li><a href="system-status.html">System Status</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <p>&copy; 2025 TrackPro GPS Tracking System. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy.html">Privacy</a>
+                <span>•</span>
+                <a href="terms.html">Terms</a>
+                <span>•</span>
+                <a href="cookies.html">Cookies</a>
+                <span>•</span>
+                <a href="sitemap.html">Sitemap</a>
+            </div>
+        </div>
+    </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>TrackBot Assistant</span>
+            </div>
+            <button class="chatbot-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="bot-message">
+                <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                <div class="message-content">
+                    <p>Hello! I'm here to help you with tracking. What would you like to know?</p>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chat-input"></label><input type="text" id="chat-input" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" onclick="toggleChat()">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+</body>
+</html>

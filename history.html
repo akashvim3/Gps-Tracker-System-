@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - TrackPro GPS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.png" alt="TrackPro Logo">
+                <span>TrackPro</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="devices.html">Devices</a></li>
+                <li><a href="history.html" class="active">History</a></li>
+                <li><a href="alerts.html">Alerts</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="user-profile">
+                    <img src="assets/images/gps-icon.png" alt="User">
+                    <span>Akash Vimal</span>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-clock-rotate-left"></i> Route History & Playback</h1>
+            <p>View and analyze historical tracking data</p>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="history-section">
+        <div class="container">
+            <div class="history-filters">
+                <div class="filter-group">
+                    <label>Device</label>
+                    <label for="history-device"></label><select id="history-device">
+                        <option value="all">All Devices</option>
+                        <option value="device1">Tesla Model 3</option>
+                        <option value="device2">Delivery Van #12</option>
+                        <option value="device3">Yamaha R15</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Date Range</label>
+                    <label for="start-date"></label><input type="date" id="start-date">
+                    <span>to</span>
+                    <label for="end-date"></label><input type="date" id="end-date">
+                </div>
+                <button class="btn-primary" onclick="applyFilters()">
+                    <i class="fas fa-filter"></i> Apply Filters
+                </button>
+                <button class="btn-secondary" onclick="exportHistory()">
+                    <i class="fas fa-download"></i> Export
+                </button>
+            </div>
+
+            <div class="history-content">
+                <div class="history-timeline">
+                    <h3>Trip History</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>Morning Commute</h4>
+                                <p class="trip-info">
+                                    <i class="fas fa-car"></i> Tesla Model 3<br>
+                                    <i class="fas fa-calendar"></i> Oct 22, 2025 - 8:30 AM<br>
+                                    <i class="fas fa-route"></i> 15.2 miles<br>
+                                    <i class="fas fa-clock"></i> Duration: 25 minutes<br>
+                                    <i class="fas fa-tachometer-alt"></i> Avg Speed: 36 mph
+                                </p>
+                                <button class="btn-small" onclick="viewRoute('trip1')">
+                                    <i class="fas fa-play"></i> Play Route
+                                </button>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>Delivery Route</h4>
+                                <p class="trip-info">
+                                    <i class="fas fa-truck"></i> Delivery Van #12<br>
+                                    <i class="fas fa-calendar"></i> Oct 22, 2025 - 10:00 AM<br>
+                                    <i class="fas fa-route"></i> 48.7 miles<br>
+                                    <i class="fas fa-clock"></i> Duration: 2 hours 15 minutes<br>
+                                    <i class="fas fa-tachometer-alt"></i> Avg Speed: 22 mph
+                                </p>
+                                <button class="btn-small" onclick="viewRoute('trip2')">
+                                    <i class="fas fa-play"></i> Play Route
+                                </button>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>Weekend Ride</h4>
+                                <p class="trip-info">
+                                    <i class="fas fa-motorcycle"></i> Yamaha R15<br>
+                                    <i class="fas fa-calendar"></i> Oct 21, 2025 - 2:00 PM<br>
+                                    <i class="fas fa-route"></i> 32.5 miles<br>
+                                    <i class="fas fa-clock"></i> Duration: 1 hour 10 minutes<br>
+                                    <i class="fas fa-tachometer-alt"></i> Avg Speed: 28 mph
+                                </p>
+                                <button class="btn-small" onclick="viewRoute('trip3')">
+                                    <i class="fas fa-play"></i> Play Route
+                                </button>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>Evening Return</h4>
+                                <p class="trip-info">
+                                    <i class="fas fa-car"></i> Tesla Model 3<br>
+                                    <i class="fas fa-calendar"></i> Oct 21, 2025 - 6:45 PM<br>
+                                    <i class="fas fa-route"></i> 14.8 miles<br>
+                                    <i class="fas fa-clock"></i> Duration: 32 minutes<br>
+                                    <i class="fas fa-tachometer-alt"></i> Avg Speed: 28 mph
+                                </p>
+                                <button class="btn-small" onclick="viewRoute('trip4')">
+                                    <i class="fas fa-play"></i> Play Route
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-stats">
+                    <h3>Statistics</h3>
+                    <div class="stat-cards">
+                        <div class="mini-stat-card">
+                            <i class="fas fa-route"></i>
+                            <h4>Total Distance</h4>
+                            <p class="stat-value">1,245 mi</p>
+                            <p class="stat-label">This Month</p>
+                        </div>
+                        <div class="mini-stat-card">
+                            <i class="fas fa-clock"></i>
+                            <h4>Total Duration</h4>
+                            <p class="stat-value">38 hrs</p>
+                            <p class="stat-label">This Month</p>
+                        </div>
+                        <div class="mini-stat-card">
+                            <i class="fas fa-location-dot"></i>
+                            <h4>Total Trips</h4>
+                            <p class="stat-value">42</p>
+                            <p class="stat-label">This Month</p>
+                        </div>
+                        <div class="mini-stat-card">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <h4>Avg Speed</h4>
+                            <p class="stat-value">33 mph</p>
+                            <p class="stat-label">Overall</p>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <h4>Daily Distance (Miles)</h4>
+                        <div class="simple-chart">
+                            <div class="chart-bar" style="height: 60%;">
+                                <span>45</span>
+                            </div>
+                            <div class="chart-bar" style="height: 80%;">
+                                <span>68</span>
+                            </div>
+                            <div class="chart-bar" style="height: 45%;">
+                                <span>32</span>
+                            </div>
+                            <div class="chart-bar" style="height: 90%;">
+                                <span>72</span>
+                            </div>
+                            <div class="chart-bar" style="height: 55%;">
+                                <span>42</span>
+                            </div>
+                            <div class="chart-bar" style="height: 70%;">
+                                <span>58</span>
+                            </div>
+                            <div class="chart-bar" style="height: 40%;">
+                                <span>28</span>
+                            </div>
+                        </div>
+                        <div class="chart-labels">
+                            <span>Mon</span>
+                            <span>Tue</span>
+                            <span>Wed</span>
+                            <span>Thu</span>
+                            <span>Fri</span>
+                            <span>Sat</span>
+                            <span>Sun</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="assets/images/logo1.png" alt="TrackPro">
+                    <span>TrackPro</span>
+                </div>
+                <p>Advanced GPS tracking solutions for vehicles, assets, and people. Real-time monitoring with AI-powered intelligence.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="devices.html">Devices</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Features</h3>
+                <ul>
+                    <li><a href="index.html#features">Real-Time Tracking</a></li>
+                    <li><a href="index.html#features">Geofencing</a></li>
+                    <li><a href="index.html#features">Route History</a></li>
+                    <li><a href="index.html#features">AI Alerts</a></li>
+                    <li><a href="index.html#features">Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="faq.html">Help Center</a></li>
+                    <li><a href="api.html">Documentation</a></li>
+                    <li><a href="api.html">API Reference</a></li>
+                    <li><a href="system-status.html">System Status</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <p>&copy; 2025 TrackPro GPS Tracking System. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy.html">Privacy</a>
+                <span>•</span>
+                <a href="terms.html">Terms</a>
+                <span>•</span>
+                <a href="cookies.html">Cookies</a>
+                <span>•</span>
+                <a href="sitemap.html">Sitemap</a>
+            </div>
+        </div>
+    </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>TrackBot Assistant</span>
+            </div>
+            <button class="chatbot-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="bot-message">
+                <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                <div class="message-content">
+                    <p>Need help with route history? Ask me anything!</p>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chat-input"></label><input type="text" id="chat-input" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" onclick="toggleChat()">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+</body>
+</html>

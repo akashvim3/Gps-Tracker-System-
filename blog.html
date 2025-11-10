@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - TrackPro GPS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.png" alt="TrackPro Logo">
+                <span>TrackPro</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="devices.html">Devices</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-login" onclick="openLoginModal()">Login</button>
+                <button class="btn-signup" onclick="openSignupModal()">Sign Up</button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-newspaper"></i> Blog & News</h1>
+            <p>Latest updates, tips, and insights from TrackPro</p>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-layout">
+                <!-- Main Blog Content -->
+                <main class="blog-main">
+                    <div class="blog-filters">
+                        <button class="blog-filter-btn active" onclick="filterBlog('all')">All Posts</button>
+                        <button class="blog-filter-btn" onclick="filterBlog('news')">News</button>
+                        <button class="blog-filter-btn" onclick="filterBlog('guides')">Guides</button>
+                        <button class="blog-filter-btn" onclick="filterBlog('updates')">Updates</button>
+                        <button class="blog-filter-btn" onclick="filterBlog('tips')">Tips</button>
+                    </div>
+
+                    <!-- Featured Post -->
+                    <article class="blog-post featured" data-category="news">
+                        <div class="blog-post-image">
+                            <img src="assets/images/tracking-feature.png" alt="Featured Post">
+                            <span class="blog-badge featured-badge">Featured</span>
+                        </div>
+                        <div class="blog-post-content">
+                            <div class="blog-post-meta">
+                                <span class="blog-category">News</span>
+                                <span class="blog-date"><i class="fas fa-calendar"></i> October 20, 2025</span>
+                                <span class="blog-read-time"><i class="fas fa-clock"></i> 5 min read</span>
+                            </div>
+                            <h2>TrackPro Launches AI-Powered Predictive Alerts</h2>
+                            <p>We're excited to announce our latest feature: AI-powered predictive alerts that use machine learning to anticipate potential issues before they occur. This groundbreaking technology analyzes historical data patterns to predict maintenance needs, unusual behavior, and potential security threats.</p>
+                            <a href="#" class="btn-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Regular Posts -->
+                    <div class="blog-grid">
+                        <article class="blog-post" data-category="guides">
+                            <div class="blog-post-image">
+                                <img src="assets/images/geofence-feature.png" alt="Blog Post">
+                                <span class="blog-badge">Guide</span>
+                            </div>
+                            <div class="blog-post-content">
+                                <div class="blog-post-meta">
+                                    <span class="blog-category">Guides</span>
+                                    <span class="blog-date"><i class="fas fa-calendar"></i> October 18, 2025</span>
+                                </div>
+                                <h3>Complete Guide to Setting Up Geofencing</h3>
+                                <p>Learn how to create effective geofences for your fleet management needs. This comprehensive guide covers best practices, use cases, and step-by-step instructions.</p>
+                                <a href="#" class="btn-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="blog-post" data-category="tips">
+                            <div class="blog-post-image">
+                                <img src="assets/images/history-feature.png" alt="Blog Post">
+                                <span class="blog-badge">Tips</span>
+                            </div>
+                            <div class="blog-post-content">
+                                <div class="blog-post-meta">
+                                    <span class="blog-category">Tips</span>
+                                    <span class="blog-date"><i class="fas fa-calendar"></i> October 15, 2025</span>
+                                </div>
+                                <h3>10 Tips to Maximize GPS Tracker Battery Life</h3>
+                                <p>Extend your GPS tracker's battery life with these proven tips and tricks. Learn about power-saving modes, optimal update intervals, and maintenance best practices.</p>
+                                <a href="#" class="btn-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="blog-post" data-category="updates">
+                            <div class="blog-post-image">
+                                <img src="assets/images/alert-feature.png" alt="Blog Post">
+                                <span class="blog-badge">Update</span>
+                            </div>
+                            <div class="blog-post-content">
+                                <div class="blog-post-meta">
+                                    <span class="blog-category">Updates</span>
+                                    <span class="blog-date"><i class="fas fa-calendar"></i> October 12, 2025</span>
+                                </div>
+                                <h3>New Dashboard Features Released - October 2025</h3>
+                                <p>Check out the latest enhancements to our dashboard including heatmap view, advanced filters, custom reports, and improved mobile experience.</p>
+                                <a href="#" class="btn-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="blog-post" data-category="guides">
+                            <div class="blog-post-image">
+                                <img src="assets/images/history-feature.png" alt="Blog Post">
+                                <span class="blog-badge">Guide</span>
+                            </div>
+                            <div class="blog-post-content">
+                                <div class="blog-post-meta">
+                                    <span class="blog-category">Guides</span>
+                                    <span class="blog-date"><i class="fas fa-calendar"></i> October 8, 2025</span>
+                                </div>
+                                <h3>Fleet Management Best Practices for 2025</h3>
+                                <p>Discover industry best practices for managing vehicle fleets efficiently. Learn about route optimization, driver safety, and cost reduction strategies.</p>
+                                <a href="#" class="btn-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="blog-post" data-category="news">
+                            <div class="blog-post-image">
+                                <img src="assets/images/geofence-feature1.png" alt="Blog Post">
+                                <span class="blog-badge">News</span>
+                            </div>
+                            <div class="blog-post-content">
+                                <div class="blog-post-meta">
+                                    <span class="blog-category">News</span>
+                                    <span class="blog-date"><i class="fas fa-calendar"></i> October 5, 2025</span>
+                                </div>
+                                <h3>TrackPro Reaches 50,000 Active Users Milestone</h3>
+                                <p>We're thrilled to announce that TrackPro has reached 50,000 active users across 150 countries. Thank you for your continued trust and support!</p>
+                                <a href="#" class="btn-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="blog-post" data-category="tips">
+                            <div class="blog-post-image">
+                                <img src="assets/images/history-feature.png" alt="Blog Post">
+                                <span class="blog-badge">Tips</span>
+                            </div>
+                            <div class="blog-post-content">
+                                <div class="blog-post-meta">
+                                    <span class="blog-category">Tips</span>
+                                    <span class="blog-date"><i class="fas fa-calendar"></i> October 1, 2025</span>
+                                </div>
+                                <h3>How to Choose the Right GPS Tracker for Your Needs</h3>
+                                <p>Not sure which GPS tracker is right for you? This guide breaks down the different types of trackers and helps you make the best choice.</p>
+                                <a href="#" class="btn-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="pagination-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <button class="pagination-btn">4</button>
+                        <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </main>
+
+                <!-- Sidebar -->
+                <aside class="blog-sidebar">
+                    <!-- Search -->
+                    <div class="sidebar-widget">
+                        <h3>Search</h3>
+                        <div class="sidebar-search">
+                            <label>
+                                <input type="text" placeholder="Search articles...">
+                            </label>
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="sidebar-widget">
+                        <h3>Categories</h3>
+                        <ul class="sidebar-categories">
+                            <li><a href="#"><i class="fas fa-newspaper"></i> News <span>12</span></a></li>
+                            <li><a href="#"><i class="fas fa-book"></i> Guides <span>8</span></a></li>
+                            <li><a href="#"><i class="fas fa-sync"></i> Updates <span>15</span></a></li>
+                            <li><a href="#"><i class="fas fa-lightbulb"></i> Tips <span>20</span></a></li>
+                            <li><a href="#"><i class="fas fa-code"></i> Technical <span>6</span></a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Recent Posts -->
+                    <div class="sidebar-widget">
+                        <h3>Recent Posts</h3>
+                        <div class="recent-posts">
+                            <div class="recent-post">
+                                <img src="assets/images/gps-icon.png" alt="Recent">
+                                <div class="recent-post-content">
+                                    <h4>AI-Powered Predictive Alerts</h4>
+                                    <span>October 20, 2025</span>
+                                </div>
+                            </div>
+                            <div class="recent-post">
+                                <img src="assets/images/gps-icon.png" alt="Recent">
+                                <div class="recent-post-content">
+                                    <h4>Geofencing Setup Guide</h4>
+                                    <span>October 18, 2025</span>
+                                </div>
+                            </div>
+                            <div class="recent-post">
+                                <img src="assets/images/gps-icon.png" alt="Recent">
+                                <div class="recent-post-content">
+                                    <h4>Battery Life Tips</h4>
+                                    <span>October 15, 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="sidebar-widget newsletter-widget">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe to get the latest updates and tips delivered to your inbox.</p>
+                        <form class="newsletter-form">
+                            <label>
+                                <input type="email" placeholder="Your email address" required>
+                            </label>
+                            <button type="submit" class="btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="sidebar-widget">
+                        <h3>Popular Tags</h3>
+                        <div class="tags-cloud">
+                            <a href="#" class="tag">GPS Tracking</a>
+                            <a href="#" class="tag">Fleet Management</a>
+                            <a href="#" class="tag">Geofencing</a>
+                            <a href="#" class="tag">Vehicle Safety</a>
+                            <a href="#" class="tag">IoT</a>
+                            <a href="#" class="tag">Mobile Apps</a>
+                            <a href="#" class="tag">Real-Time</a>
+                            <a href="#" class="tag">Analytics</a>
+                            <a href="#" class="tag">API</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="assets/images/logo1.png" alt="TrackPro">
+                    <span>TrackPro</span>
+                </div>
+                <p>Advanced GPS tracking solutions for vehicles, assets, and people. Real-time monitoring with AI-powered intelligence.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="devices.html">Devices</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Features</h3>
+                <ul>
+                    <li><a href="index.html#features">Real-Time Tracking</a></li>
+                    <li><a href="index.html#features">Geofencing</a></li>
+                    <li><a href="index.html#features">Route History</a></li>
+                    <li><a href="index.html#features">AI Alerts</a></li>
+                    <li><a href="index.html#features">Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="faq.html">Help Center</a></li>
+                    <li><a href="api.html">Documentation</a></li>
+                    <li><a href="api.html">API Reference</a></li>
+                    <li><a href="system-status.html">System Status</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <p>&copy; 2025 TrackPro GPS Tracking System. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy.html">Privacy</a>
+                <span>•</span>
+                <a href="terms.html">Terms</a>
+                <span>•</span>
+                <a href="cookies.html">Cookies</a>
+                <span>•</span>
+                <a href="sitemap.html">Sitemap</a>
+            </div>
+        </div>
+    </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>TrackBot Assistant</span>
+            </div>
+            <button class="chatbot-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="bot-message">
+                <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                <div class="message-content">
+                    <p>Looking for specific information? I can help you find relevant articles!</p>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chat-input"></label><input type="text" id="chat-input" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" onclick="toggleChat()">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+    <script>
+        // Blog Filter Function
+        function filterBlog(category) {
+            const posts = document.querySelectorAll('.blog-post:not(.featured)');
+            const buttons = document.querySelectorAll('.blog-filter-btn');
+
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filter posts
+            posts.forEach(post => {
+                if (category === 'all' || post.dataset.category === category) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

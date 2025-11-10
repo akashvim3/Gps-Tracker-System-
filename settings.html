@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - TrackPro GPS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.png" alt="TrackPro Logo">
+                <span>TrackPro</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="devices.html">Devices</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="alerts.html">Alerts</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="user-profile">
+                    <img src="assets/images/gps-icon.png" alt="User">
+                    <span>Akash Vimal</span>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-cog"></i> Settings & Preferences</h1>
+            <p>Customize your TrackPro experience</p>
+        </div>
+    </section>
+
+    <!-- Settings Section -->
+    <section class="settings-section">
+        <div class="container">
+            <div class="settings-container">
+                <!-- Settings Sidebar -->
+                <aside class="settings-sidebar">
+                    <div class="settings-menu">
+                        <a href="#profile" class="settings-menu-item active" onclick="showSettingsTab('profile')">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                        <a href="#account" class="settings-menu-item" onclick="showSettingsTab('account')">
+                            <i class="fas fa-shield-halved"></i>
+                            <span>Account Security</span>
+                        </a>
+                        <a href="#notifications" class="settings-menu-item" onclick="showSettingsTab('notifications')">
+                            <i class="fas fa-bell"></i>
+                            <span>Notifications</span>
+                        </a>
+                        <a href="#preferences" class="settings-menu-item" onclick="showSettingsTab('preferences')">
+                            <i class="fas fa-sliders"></i>
+                            <span>Preferences</span>
+                        </a>
+                        <a href="#billing" class="settings-menu-item" onclick="showSettingsTab('billing')">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Billing</span>
+                        </a>
+                        <a href="#api" class="settings-menu-item" onclick="showSettingsTab('api')">
+                            <i class="fas fa-code"></i>
+                            <span>API Keys</span>
+                        </a>
+                        <a href="#advanced" class="settings-menu-item" onclick="showSettingsTab('advanced')">
+                            <i class="fas fa-gears"></i>
+                            <span>Advanced</span>
+                        </a>
+                    </div>
+                </aside>
+
+                <!-- Settings Content -->
+                <main class="settings-content">
+                    <!-- Profile Settings -->
+                    <div class="settings-panel active" id="profile-panel">
+                        <h2>Profile Information</h2>
+                        <div class="profile-photo-section">
+                            <div class="profile-photo">
+                                <img src="assets/images/gps-icon.png" alt="Profile" id="profile-image">
+                                <div class="photo-overlay">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                            </div>
+                            <div class="photo-actions">
+                                <button class="btn-primary" onclick="document.getElementById('photo-upload').click()">
+                                    <i class="fas fa-upload"></i> Upload Photo
+                                </button>
+                                <button class="btn-secondary" onclick="removePhoto()">
+                                    <i class="fas fa-trash"></i> Remove
+                                </button>
+                                <input type="file" id="photo-upload" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
+                            </div>
+                        </div>
+
+                        <form class="settings-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <label>
+                                        <input type="text" value="John" required>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <label>
+                                        <input type="text" value="Doe" required>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <label>
+                                    <input type="email" value="john.doe@example.com" required>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <label>
+                                    <input type="tel" value="+1 (555) 123-4567">
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>Company</label>
+                                <label>
+                                    <input type="text" value="Tech Corp">
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <label>
+                                    <textarea rows="3">123 Main Street, San Francisco, CA 94102</textarea>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn-save">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Account Security -->
+                    <div class="settings-panel" id="account-panel">
+                        <h2>Account Security</h2>
+                        <div class="security-section">
+                            <h3>Change Password</h3>
+                            <form class="settings-form">
+                                <div class="form-group">
+                                    <label>Current Password</label>
+                                    <label>
+                                        <input type="password" placeholder="Enter current password" required>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>New Password</label>
+                                    <label>
+                                        <input type="password" placeholder="Enter new password" required>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm New Password</label>
+                                    <label>
+                                        <input type="password" placeholder="Confirm new password" required>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn-save">
+                                    <i class="fas fa-lock"></i> Update Password
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="security-section">
+                            <h3>Two-Factor Authentication</h3>
+                            <div class="security-option">
+                                <div class="option-info">
+                                    <h4>Enable 2FA</h4>
+                                    <p>Add an extra layer of security to your account</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="security-section">
+                            <h3>Active Sessions</h3>
+                            <div class="session-list">
+                                <div class="session-item">
+                                    <div class="session-icon">
+                                        <i class="fas fa-desktop"></i>
+                                    </div>
+                                    <div class="session-info">
+                                        <h4>Windows - Chrome</h4>
+                                        <p>San Francisco, CA • Active now</p>
+                                    </div>
+                                    <button class="btn-danger-small">Logout</button>
+                                </div>
+                                <div class="session-item">
+                                    <div class="session-icon">
+                                        <i class="fas fa-mobile"></i>
+                                    </div>
+                                    <div class="session-info">
+                                        <h4>iPhone - Safari</h4>
+                                        <p>Los Angeles, CA • 2 hours ago</p>
+                                    </div>
+                                    <button class="btn-danger-small">Logout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications Settings -->
+                    <div class="settings-panel" id="notifications-panel">
+                        <h2>Notification Preferences</h2>
+
+                        <div class="notification-section">
+                            <h3>Email Notifications</h3>
+                            <div class="notification-option">
+                                <div class="option-info">
+                                    <h4>Device Alerts</h4>
+                                    <p>Receive emails for device alerts and warnings</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="notification-option">
+                                <div class="option-info">
+                                    <h4>Weekly Reports</h4>
+                                    <p>Get weekly summary of your tracking activity</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="notification-option">
+                                <div class="option-info">
+                                    <h4>Marketing Emails</h4>
+                                    <p>Receive updates about new features and promotions</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="notification-section">
+                            <h3>Push Notifications</h3>
+                            <div class="notification-option">
+                                <div class="option-info">
+                                    <h4>Real-time Alerts</h4>
+                                    <p>Get instant push notifications for critical alerts</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="notification-option">
+                                <div class="option-info">
+                                    <h4>Geofence Notifications</h4>
+                                    <p>Alert when devices enter/exit geofenced areas</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="notification-section">
+                            <h3>SMS Notifications</h3>
+                            <div class="notification-option">
+                                <div class="option-info">
+                                    <h4>Emergency Alerts</h4>
+                                    <p>Receive SMS for emergency SOS alerts only</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preferences -->
+                    <div class="settings-panel" id="preferences-panel">
+                        <h2>General Preferences</h2>
+
+                        <div class="preference-section">
+                            <h3>Appearance</h3>
+                            <div class="form-group">
+                                <label>Theme</label>
+                                <label for="theme-selector"></label><select id="theme-selector" onchange="changeTheme()">
+                                    <option value="light">Light Mode</option>
+                                    <option value="dark">Dark Mode</option>
+                                    <option value="auto">Auto (System)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Language</label>
+                                <label for="language-selector"></label><select id="language-selector" onchange="changeLanguage()">
+                                    <option value="en">English</option>
+                                    <option value="es">Español</option>
+                                    <option value="fr">Français</option>
+                                    <option value="de">Deutsch</option>
+                                    <option value="zh">中文</option>
+                                    <option value="ja">日本語</option>
+                                    <option value="hi">हिन्दी</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="preference-section">
+                            <h3>Map Settings</h3>
+                            <div class="form-group">
+                                <label>Default Map View</label>
+                                <label>
+                                    <select>
+                                        <option value="standard">Standard</option>
+                                        <option value="satellite">Satellite</option>
+                                        <option value="terrain">Terrain</option>
+                                        <option value="hybrid">Hybrid</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>Map Units</label>
+                                <label>
+                                    <select>
+                                        <option value="metric">Metric (km, m)</option>
+                                        <option value="imperial" selected>Imperial (miles, feet)</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="notification-option">
+                                <div class="option-info">
+                                    <h4>Show Traffic Layer</h4>
+                                    <p>Display real-time traffic information on map</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="notification-option">
+                                <div class="option-info">
+                                    <h4>Show Weather Layer</h4>
+                                    <p>Display weather conditions on map</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="preference-section">
+                            <h3>Tracking Preferences</h3>
+                            <div class="form-group">
+                                <label>Update Interval</label>
+                                <label>
+                                    <select>
+                                        <option value="1">Every 1 second</option>
+                                        <option value="5" selected>Every 5 seconds</option>
+                                        <option value="10">Every 10 seconds</option>
+                                        <option value="30">Every 30 seconds</option>
+                                        <option value="60">Every 1 minute</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>Time Zone</label>
+                                <label>
+                                    <select>
+                                        <option value="PST" selected>Pacific (PST)</option>
+                                        <option value="EST">Eastern (EST)</option>
+                                        <option value="CST">Central (CST)</option>
+                                        <option value="MST">Mountain (MST)</option>
+                                        <option value="UTC">UTC</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Billing -->
+                    <div class="settings-panel" id="billing-panel">
+                        <h2>Billing & Subscription</h2>
+
+                        <div class="current-plan">
+                            <div class="plan-badge">Current Plan</div>
+                            <h3>Pro Plan</h3>
+                            <div class="plan-price">
+                                <span class="amount">$24.99</span>
+                                <span class="period">/month</span>
+                            </div>
+                            <p>Next billing date: November 23, 2025</p>
+                            <div class="plan-actions">
+                                <button class="btn-primary">Upgrade Plan</button>
+                                <button class="btn-secondary">Cancel Subscription</button>
+                            </div>
+                        </div>
+
+                        <div class="billing-section">
+                            <h3>Payment Method</h3>
+                            <div class="payment-card">
+                                <div class="card-icon">
+                                    <i class="fab fa-cc-visa"></i>
+                                </div>
+                                <div class="card-info">
+                                    <h4>Visa ending in 4242</h4>
+                                    <p>Expires 12/2026</p>
+                                </div>
+                                <button class="btn-action" onclick="editPaymentMethod()">Edit</button>
+                            </div>
+                            <button class="btn-add" onclick="addPaymentMethod()">
+                                <i class="fas fa-plus"></i> Add Payment Method
+                            </button>
+                        </div>
+
+                        <div class="billing-section">
+                            <h3>Billing History</h3>
+                            <div class="billing-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Description</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>Invoice</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Oct 23, 2025</td>
+                                            <td>Pro Plan - Monthly</td>
+                                            <td>$24.99</td>
+                                            <td><span class="status-badge success">Paid</span></td>
+                                            <td><button class="btn-download"><i class="fas fa-download"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sep 23, 2025</td>
+                                            <td>Pro Plan - Monthly</td>
+                                            <td>$24.99</td>
+                                            <td><span class="status-badge success">Paid</span></td>
+                                            <td><button class="btn-download"><i class="fas fa-download"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Aug 23, 2025</td>
+                                            <td>Pro Plan - Monthly</td>
+                                            <td>$24.99</td>
+                                            <td><span class="status-badge success">Paid</span></td>
+                                            <td><button class="btn-download"><i class="fas fa-download"></i></button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- API Keys -->
+                    <div class="settings-panel" id="api-panel">
+                        <h2>API Keys & Integrations</h2>
+
+                        <div class="api-section">
+                            <h3>API Keys</h3>
+                            <p class="section-description">Use these keys to integrate TrackPro with your applications. Keep them secure!</p>
+
+                            <div class="api-key-card">
+                                <div class="api-key-header">
+                                    <h4>Production API Key</h4>
+                                    <span class="status-badge success">Active</span>
+                                </div>
+                                <div class="api-key-value">
+                                    <code id="prod-api-key">sk_live_••••••••••••••••••••4a2b</code>
+                                    <button class="btn-copy" onclick="copyApiKey('prod-api-key')">
+                                        <i class="fas fa-copy"></i> Copy
+                                    </button>
+                                </div>
+                                <p class="api-key-info">Created: Oct 1, 2025 • Last used: 2 hours ago</p>
+                            </div>
+
+                            <div class="api-key-card">
+                                <div class="api-key-header">
+                                    <h4>Test API Key</h4>
+                                    <span class="status-badge warning">Test Mode</span>
+                                </div>
+                                <div class="api-key-value">
+                                    <code id="test-api-key">sk_test_••••••••••••••••••••9f3c</code>
+                                    <button class="btn-copy" onclick="copyApiKey('test-api-key')">
+                                        <i class="fas fa-copy"></i> Copy
+                                    </button>
+                                </div>
+                                <p class="api-key-info">Created: Oct 1, 2025 • Last used: 1 day ago</p>
+                            </div>
+
+                            <button class="btn-primary" onclick="generateApiKey()">
+                                <i class="fas fa-plus"></i> Generate New API Key
+                            </button>
+                        </div>
+
+                        <div class="api-section">
+                            <h3>Webhooks</h3>
+                            <p class="section-description">Receive real-time notifications when events occur in your account.</p>
+
+                            <div class="webhook-card">
+                                <div class="webhook-info">
+                                    <h4>https://api.myapp.com/webhooks/trackpro</h4>
+                                    <p>Events: device.alert, geofence.enter, geofence.exit</p>
+                                </div>
+                                <div class="webhook-actions">
+                                    <button class="btn-action">Edit</button>
+                                    <button class="btn-danger-small">Delete</button>
+                                </div>
+                            </div>
+
+                            <button class="btn-add" onclick="addWebhook()">
+                                <i class="fas fa-plus"></i> Add Webhook
+                            </button>
+                        </div>
+
+                        <div class="api-section">
+                            <h3>API Documentation</h3>
+                            <button class="btn-secondary" onclick="window.open('api-docs.html', '_blank')">
+                                <i class="fas fa-book"></i> View API Documentation
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Settings -->
+                    <div class="settings-panel" id="advanced-panel">
+                        <h2>Advanced Settings</h2>
+
+                        <div class="advanced-section">
+                            <h3>Data Export</h3>
+                            <p class="section-description">Download all your tracking data in various formats.</p>
+                            <div class="export-options">
+                                <button class="btn-export" onclick="exportData('csv')">
+                                    <i class="fas fa-file-csv"></i> Export as CSV
+                                </button>
+                                <button class="btn-export" onclick="exportData('json')">
+                                    <i class="fas fa-file-code"></i> Export as JSON
+                                </button>
+                                <button class="btn-export" onclick="exportData('pdf')">
+                                    <i class="fas fa-file-pdf"></i> Export as PDF
+                                </button>
+                                <button class="btn-export" onclick="exportData('excel')">
+                                    <i class="fas fa-file-excel"></i> Export as Excel
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="advanced-section">
+                            <h3>Data Retention</h3>
+                            <div class="form-group">
+                                <label>History Retention Period</label>
+                                <label>
+                                    <select>
+                                        <option value="30">30 days</option>
+                                        <option value="90">90 days</option>
+                                        <option value="180" selected>180 days</option>
+                                        <option value="365">365 days</option>
+                                        <option value="unlimited">Unlimited</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="advanced-section">
+                            <h3>Voice Commands</h3>
+                            <div class="notification-option">
+                                <div class="option-info">
+                                    <h4>Enable Voice Control</h4>
+                                    <p>Control TrackPro using voice commands</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" id="voice-toggle" onchange="toggleVoiceControl()">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <button class="btn-secondary" onclick="testVoiceCommand()">
+                                <i class="fas fa-microphone"></i> Test Voice Command
+                            </button>
+                        </div>
+
+                        <div class="advanced-section danger-zone">
+                            <h3>Danger Zone</h3>
+                            <div class="danger-action">
+                                <div>
+                                    <h4>Delete All Device History</h4>
+                                    <p>Permanently delete all tracking history data</p>
+                                </div>
+                                <button class="btn-danger" onclick="deleteHistory()">Delete History</button>
+                            </div>
+                            <div class="danger-action">
+                                <div>
+                                    <h4>Delete Account</h4>
+                                    <p>Permanently delete your account and all associated data</p>
+                                </div>
+                                <button class="btn-danger" onclick="deleteAccount()">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="assets/images/logo1.png" alt="TrackPro">
+                    <span>TrackPro</span>
+                </div>
+                <p>Advanced GPS tracking solutions for vehicles, assets, and people. Real-time monitoring with AI-powered intelligence.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="devices.html">Devices</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Features</h3>
+                <ul>
+                    <li><a href="index.html#features">Real-Time Tracking</a></li>
+                    <li><a href="index.html#features">Geofencing</a></li>
+                    <li><a href="index.html#features">Route History</a></li>
+                    <li><a href="index.html#features">AI Alerts</a></li>
+                    <li><a href="index.html#features">Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="faq.html">Help Center</a></li>
+                    <li><a href="api.html">Documentation</a></li>
+                    <li><a href="api.html">API Reference</a></li>
+                    <li><a href="system-status.html">System Status</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <p>&copy; 2025 TrackPro GPS Tracking System. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy.html">Privacy</a>
+                <span>•</span>
+                <a href="terms.html">Terms</a>
+                <span>•</span>
+                <a href="cookies.html">Cookies</a>
+                <span>•</span>
+                <a href="sitemap.html">Sitemap</a>
+            </div>
+        </div>
+    </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>TrackBot Assistant</span>
+            </div>
+            <button class="chatbot-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="bot-message">
+                <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                <div class="message-content">
+                    <p>Need help with settings? I can guide you through any configuration!</p>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chat-input"></label><input type="text" id="chat-input" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" onclick="toggleChat()">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+</body>
+</html>

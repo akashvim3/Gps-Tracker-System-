@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrackPro - Advanced GPS Tracking System</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.png" alt="TrackPro Logo">
+                <span>TrackPro</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="devices.html">Devices</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="alerts.html">Alerts</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-login" onclick="openLoginModal()">Login</button>
+                <button class="btn-signup" onclick="openSignupModal()">Sign Up</button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Real-Time GPS Tracking Made Simple</h1>
+            <p class="hero-subtitle">Track vehicles, assets, and loved ones with precision. AI-powered alerts, geofencing, and 24/7 monitoring.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="location.href='dashboard.html'">
+                    <i class="fas fa-rocket"></i> Start Tracking
+                </button>
+                <button class="btn-secondary" onclick="playDemo()">
+                    <i class="fas fa-play"></i> Watch Demo
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>50K+</h3>
+                    <p>Active Users</p>
+                </div>
+                <div class="stat-item">
+                    <h3>99.9%</h3>
+                    <p>Uptime</p>
+                </div>
+                <div class="stat-item">
+                    <h3>200K+</h3>
+                    <p>Devices Tracked</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-animation">
+            <div class="pulse-marker"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powerful Features for Complete Control</h2>
+                <p>Everything you need to track, monitor, and protect what matters most</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-location-dot"></i>
+                    </div>
+                    <img src="assets/images/tracking-feature.png" alt="Real-Time Tracking">
+                    <h3>Real-Time Tracking</h3>
+                    <p>Get live location updates every second with pinpoint accuracy using advanced satellite technology and 5G networks.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Live map visualization</li>
+                        <li><i class="fas fa-check"></i> Speed & direction tracking</li>
+                        <li><i class="fas fa-check"></i> Battery status monitoring</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <img src="assets/images/geofence-feature.png" alt="Geofencing">
+                    <h3>Smart Geofencing</h3>
+                    <p>Create virtual boundaries and receive instant alerts when devices enter or exit predefined zones.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Custom zone creation</li>
+                        <li><i class="fas fa-check"></i> Instant push notifications</li>
+                        <li><i class="fas fa-check"></i> Unlimited geofences</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock-rotate-left"></i>
+                    </div>
+                    <img src="assets/images/history-feature.png" alt="Route History">
+                    <h3>Route History & Playback</h3>
+                    <p>Analyze past routes with detailed playback, timestamps, and comprehensive trip reports.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 365-day history storage</li>
+                        <li><i class="fas fa-check"></i> Interactive route replay</li>
+                        <li><i class="fas fa-check"></i> Detailed analytics</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <img src="assets/images/alert-feature.png" alt="AI Alerts">
+                    <h3>AI-Powered Alerts</h3>
+                    <p>Smart notifications for speeding, unusual movement, low battery, and emergency SOS with machine learning.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Intelligent pattern detection</li>
+                        <li><i class="fas fa-check"></i> Emergency SOS button</li>
+                        <li><i class="fas fa-check"></i> Multi-channel alerts</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <img src="assets/images/tracking-feature.png" alt="Analytics">
+                    <h3>Advanced Analytics</h3>
+                    <p>Gain insights with comprehensive dashboards, reports, and data visualization tools.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Distance & fuel reports</li>
+                        <li><i class="fas fa-check"></i> Driver behavior analysis</li>
+                        <li><i class="fas fa-check"></i> Custom report generation</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-screen"></i>
+                    </div>
+                    <img src="assets/images/geofence-feature1.png" alt="Multi-Platform">
+                    <h3>Cross-Platform Access</h3>
+                    <p>Access your tracking data anywhere, anytime from mobile, tablet, or desktop devices.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> iOS & Android apps</li>
+                        <li><i class="fas fa-check"></i> Web dashboard</li>
+                        <li><i class="fas fa-check"></i> Real-time sync</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Get started in just 3 simple steps</p>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fas fa-box"></i></div>
+                    <h3>Choose Your Device</h3>
+                    <p>Select from our range of GPS trackers for vehicles, personal use, or assets.</p>
+                </div>
+                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fas fa-plug"></i></div>
+                    <h3>Install & Activate</h3>
+                    <p>Easy installation with step-by-step guidance and instant cloud activation.</p>
+                </div>
+                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fas fa-map-location-dot"></i></div>
+                    <h3>Start Tracking</h3>
+                    <p>Monitor real-time location, set alerts, and access your dashboard 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Choose the plan that fits your needs</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">9.99</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 1 Device</li>
+                        <li><i class="fas fa-check"></i> Real-time tracking</li>
+                        <li><i class="fas fa-check"></i> 30-day history</li>
+                        <li><i class="fas fa-check"></i> Basic alerts</li>
+                        <li><i class="fas fa-check"></i> Email support</li>
+                    </ul>
+                    <button class="btn-pricing">Get Started</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Pro</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">24.99</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 5 Devices</li>
+                        <li><i class="fas fa-check"></i> Real-time tracking</li>
+                        <li><i class="fas fa-check"></i> 180-day history</li>
+                        <li><i class="fas fa-check"></i> Advanced AI alerts</li>
+                        <li><i class="fas fa-check"></i> Geofencing unlimited</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                    </ul>
+                    <button class="btn-pricing">Get Started</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">99.99</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Unlimited devices</li>
+                        <li><i class="fas fa-check"></i> Real-time tracking</li>
+                        <li><i class="fas fa-check"></i> 365-day history</li>
+                        <li><i class="fas fa-check"></i> AI-powered analytics</li>
+                        <li><i class="fas fa-check"></i> Custom integrations</li>
+                        <li><i class="fas fa-check"></i> Dedicated support</li>
+                        <li><i class="fas fa-check"></i> API access</li>
+                    </ul>
+                    <button class="btn-pricing">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Trusted by thousands worldwide</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"TrackPro has transformed our fleet management. Real-time tracking and AI alerts have reduced our operational costs by 30%."</p>
+                    <div class="testimonial-author">
+                        <h4>John Martinez</h4>
+                        <span>Fleet Manager, LogiCorp</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Peace of mind knowing I can track my elderly parent's location. The SOS feature is a lifesaver. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <h4>Sarah Johnson</h4>
+                        <span>Personal User</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The geofencing feature is incredible. We get instant alerts when our delivery vehicles enter or leave designated zones."</p>
+                    <div class="testimonial-author">
+                        <h4>David Chen</h4>
+                        <span>Operations Director, QuickShip</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Tracking?</h2>
+            <p>Join thousands of users who trust TrackPro for their GPS tracking needs</p>
+            <button class="btn-cta" onclick="location.href='dashboard.html'">Get Started Free</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="assets/images/logo1.png" alt="TrackPro">
+                    <span>TrackPro</span>
+                </div>
+                <p>Advanced GPS tracking solutions for vehicles, assets, and people. Real-time monitoring with AI-powered intelligence.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="devices.html">Devices</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Features</h3>
+                <ul>
+                    <li><a href="index.html#features">Real-Time Tracking</a></li>
+                    <li><a href="index.html#features">Geofencing</a></li>
+                    <li><a href="index.html#features">Route History</a></li>
+                    <li><a href="index.html#features">AI Alerts</a></li>
+                    <li><a href="index.html#features">Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="faq.html">Help Center</a></li>
+                    <li><a href="api.html">Documentation</a></li>
+                    <li><a href="api.html">API Reference</a></li>
+                    <li><a href="system-status.html">System Status</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <p>&copy; 2025 TrackPro GPS Tracking System. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy.html">Privacy</a>
+                <span>•</span>
+                <a href="terms.html">Terms</a>
+                <span>•</span>
+                <a href="cookies.html">Cookies</a>
+                <span>•</span>
+                <a href="sitemap.html">Sitemap</a>
+            </div>
+        </div>
+    </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>TrackBot Assistant</span>
+            </div>
+            <button class="chatbot-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="bot-message">
+                <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                <div class="message-content">
+                    <p>Hello! I'm TrackBot, your GPS tracking assistant. How can I help you today?</p>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chat-input"></label><input type="text" id="chat-input" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" onclick="toggleChat()">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeLoginModal()">&times;</span>
+            <h2>Login to TrackPro</h2>
+            <form class="auth-form">
+                <div class="form-group">
+                    <label>Email</label>
+                    <label>
+                        <input type="email" placeholder="Enter your email" required>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <label>
+                        <input type="password" placeholder="Enter your password" required>
+                    </label>
+                </div>
+                <button type="submit" class="btn-submit">Login</button>
+                <p class="form-footer">Don't have an account? <a href="#" onclick="closeLoginModal(); openSignupModal()">Sign up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signup-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeSignupModal()">&times;</span>
+            <h2>Create Account</h2>
+            <form class="auth-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <label>
+                        <input type="text" placeholder="Enter your name" required>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <label>
+                        <input type="email" placeholder="Enter your email" required>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <label>
+                        <input type="password" placeholder="Create password" required>
+                    </label>
+                </div>
+                <button type="submit" class="btn-submit">Sign Up</button>
+                <p class="form-footer">Already have an account? <a href="#" onclick="closeSignupModal(); openLoginModal()">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+</body>
+</html>

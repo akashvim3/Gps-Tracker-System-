@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts - TrackPro GPS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.png" alt="TrackPro Logo">
+                <span>TrackPro</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="devices.html">Devices</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="alerts.html" class="active">Alerts</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="user-profile">
+                    <img src="assets/images/gps-icon.png" alt="User">
+                    <span>Akash Vimal</span>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-bell"></i> Alerts & Notifications</h1>
+            <p>Manage all your GPS tracking alerts</p>
+        </div>
+    </section>
+
+    <!-- Alerts Section -->
+    <section class="alerts-section">
+        <div class="container">
+            <div class="alerts-header">
+                <button class="btn-primary" onclick="openCreateAlertModal()">
+                    <i class="fas fa-plus"></i> Create Alert Rule
+                </button>
+                <button class="btn-secondary" onclick="markAllRead()">
+                    <i class="fas fa-check-double"></i> Mark All Read
+                </button>
+            </div>
+
+            <div class="alerts-content">
+                <div class="alerts-list">
+                    <h3>Recent Alerts</h3>
+                    <div class="alert-item critical unread">
+                        <div class="alert-icon">
+                            <i class="fas fa-triangle-exclamation"></i>
+                        </div>
+                        <div class="alert-content">
+                            <h4>Speed Limit Exceeded</h4>
+                            <p>Delivery Van #12 exceeded 75 mph on Highway I-95</p>
+                            <span class="alert-time"><i class="fas fa-clock"></i> 5 minutes ago</span>
+                        </div>
+                        <button class="btn-view" onclick="viewAlertDetails('alert1')">View</button>
+                    </div>
+
+                    <div class="alert-item warning unread">
+                        <div class="alert-icon">
+                            <i class="fas fa-battery-low"></i>
+                        </div>
+                        <div class="alert-content">
+                            <h4>Low Battery Warning</h4>
+                            <p>Personal Tracker battery dropped below 20%</p>
+                            <span class="alert-time"><i class="fas fa-clock"></i> 15 minutes ago</span>
+                        </div>
+                        <button class="btn-view" onclick="viewAlertDetails('alert2')">View</button>
+                    </div>
+
+                    <div class="alert-item info">
+                        <div class="alert-icon">
+                            <i class="fas fa-location-check"></i>
+                        </div>
+                        <div class="alert-content">
+                            <h4>Geofence Entry</h4>
+                            <p>Tesla Model 3 entered Downtown Zone</p>
+                            <span class="alert-time"><i class="fas fa-clock"></i> 1 hour ago</span>
+                        </div>
+                        <button class="btn-view" onclick="viewAlertDetails('alert3')">View</button>
+                    </div>
+
+                    <div class="alert-item success">
+                        <div class="alert-icon">
+                            <i class="fas fa-circle-check"></i>
+                        </div>
+                        <div class="alert-content">
+                            <h4>Device Connected</h4>
+                            <p>Yamaha R15 is now online and transmitting</p>
+                            <span class="alert-time"><i class="fas fa-clock"></i> 2 hours ago</span>
+                        </div>
+                        <button class="btn-view" onclick="viewAlertDetails('alert4')">View</button>
+                    </div>
+
+                    <div class="alert-item warning">
+                        <div class="alert-icon">
+                            <i class="fas fa-location-crosshairs"></i>
+                        </div>
+                        <div class="alert-content">
+                            <h4>Geofence Exit</h4>
+                            <p>Delivery Van #12 left Warehouse Zone</p>
+                            <span class="alert-time"><i class="fas fa-clock"></i> 3 hours ago</span>
+                        </div>
+                        <button class="btn-view" onclick="viewAlertDetails('alert5')">View</button>
+                    </div>
+
+                    <div class="alert-item info">
+                        <div class="alert-icon">
+                            <i class="fas fa-pause"></i>
+                        </div>
+                        <div class="alert-content">
+                            <h4>Extended Stop Detected</h4>
+                            <p>Tesla Model 3 has been stationary for 30+ minutes</p>
+                            <span class="alert-time"><i class="fas fa-clock"></i> 5 hours ago</span>
+                        </div>
+                        <button class="btn-view" onclick="viewAlertDetails('alert6')">View</button>
+                    </div>
+                </div>
+
+                <div class="alerts-sidebar">
+                    <h3>Alert Rules</h3>
+                    <div class="alert-rules">
+                        <div class="rule-card">
+                            <div class="rule-header">
+                                <h4><i class="fas fa-tachometer-alt"></i> Speed Alert</h4>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <p>Alert when speed exceeds 70 mph</p>
+                        </div>
+                        <div class="rule-card">
+                            <div class="rule-header">
+                                <h4><i class="fas fa-draw-polygon"></i> Geofence</h4>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <p>Alert on zone entry/exit</p>
+                        </div>
+                        <div class="rule-card">
+                            <div class="rule-header">
+                                <h4><i class="fas fa-battery-quarter"></i> Battery Alert</h4>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <p>Alert when battery below 20%</p>
+                        </div>
+                        <div class="rule-card">
+                            <div class="rule-header">
+                                <h4><i class="fas fa-clock"></i> Idle Alert</h4>
+                                <label class="toggle">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <p>Alert after 30 min of inactivity</p>
+                        </div>
+                    </div>
+
+                    <h3>Statistics</h3>
+                    <div class="alert-stats">
+                        <div class="stat-row">
+                            <span>Today</span>
+                            <strong>8 alerts</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>This Week</span>
+                            <strong>42 alerts</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>This Month</span>
+                            <strong>186 alerts</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>Critical</span>
+                            <strong>12 alerts</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="assets/images/logo1.png" alt="TrackPro">
+                    <span>TrackPro</span>
+                </div>
+                <p>Advanced GPS tracking solutions for vehicles, assets, and people. Real-time monitoring with AI-powered intelligence.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="devices.html">Devices</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Features</h3>
+                <ul>
+                    <li><a href="index.html#features">Real-Time Tracking</a></li>
+                    <li><a href="index.html#features">Geofencing</a></li>
+                    <li><a href="index.html#features">Route History</a></li>
+                    <li><a href="index.html#features">AI Alerts</a></li>
+                    <li><a href="index.html#features">Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="faq.html">Help Center</a></li>
+                    <li><a href="api.html">Documentation</a></li>
+                    <li><a href="api.html">API Reference</a></li>
+                    <li><a href="system-status.html">System Status</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <p>&copy; 2025 TrackPro GPS Tracking System. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy.html">Privacy</a>
+                <span>•</span>
+                <a href="terms.html">Terms</a>
+                <span>•</span>
+                <a href="cookies.html">Cookies</a>
+                <span>•</span>
+                <a href="sitemap.html">Sitemap</a>
+            </div>
+        </div>
+    </div>
+    </footer>
+
+    <!-- Create Alert Modal -->
+    <div class="modal" id="create-alert-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeCreateAlertModal()">&times;</span>
+            <h2>Create Alert Rule</h2>
+            <form class="alert-form">
+                <div class="form-group">
+                    <label>Alert Type</label>
+                    <label>
+                        <select required>
+                            <option value="">Select Type</option>
+                            <option value="speed">Speed Alert</option>
+                            <option value="geofence">Geofence Alert</option>
+                            <option value="battery">Battery Alert</option>
+                            <option value="idle">Idle Alert</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Device</label>
+                    <label>
+                        <select required>
+                            <option value="all">All Devices</option>
+                            <option value="device1">Tesla Model 3</option>
+                            <option value="device2">Delivery Van #12</option>
+                            <option value="device3">Yamaha R15</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Threshold</label>
+                    <label>
+                        <input type="number" placeholder="e.g., 70 mph" required>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Notification Method</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" checked> Push Notification</label>
+                        <label><input type="checkbox" checked> Email</label>
+                        <label><input type="checkbox"> SMS</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">Create Alert</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>TrackBot Assistant</span>
+            </div>
+            <button class="chatbot-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="bot-message">
+                <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                <div class="message-content">
+                    <p>Need help setting up alerts? I can guide you!</p>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chat-input"></label><input type="text" id="chat-input" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" onclick="toggleChat()">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+</body>
+</html>

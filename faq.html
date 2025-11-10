@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - TrackPro GPS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.png" alt="TrackPro Logo">
+                <span>TrackPro</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="devices.html">Devices</a></li>
+                <li><a href="faq.html" class="active">FAQ</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-login" onclick="openLoginModal()">Login</button>
+                <button class="btn-signup" onclick="openSignupModal()">Sign Up</button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-circle-question"></i> Frequently Asked Questions</h1>
+            <p>Find answers to common questions about TrackPro</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section-main">
+        <div class="container">
+            <div class="faq-search">
+                <i class="fas fa-search"></i>
+                <label for="faq-search-input"></label><input type="text" id="faq-search-input" placeholder="Search for answers..." onkeyup="searchFAQ()">
+            </div>
+
+            <div class="faq-categories">
+                <button class="faq-category-btn active" onclick="filterCategory('all')">All Topics</button>
+                <button class="faq-category-btn" onclick="filterCategory('general')">General</button>
+                <button class="faq-category-btn" onclick="filterCategory('tracking')">Tracking</button>
+                <button class="faq-category-btn" onclick="filterCategory('devices')">Devices</button>
+                <button class="faq-category-btn" onclick="filterCategory('billing')">Billing</button>
+                <button class="faq-category-btn" onclick="filterCategory('technical')">Technical</button>
+            </div>
+
+            <div class="faq-container">
+                <!-- General Questions -->
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>What is TrackPro GPS Tracking System?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>TrackPro is a comprehensive GPS tracking platform that allows you to monitor vehicles, assets, and people in real-time. Our system combines cutting-edge GPS technology with AI-powered analytics to provide accurate location tracking, geofencing, route history, and intelligent alerts.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How accurate is the GPS tracking?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>TrackPro provides industry-leading GPS accuracy within 5-10 meters (16-33 feet) in optimal conditions. Accuracy can be affected by factors such as tall buildings, dense forests, or tunnels. Our system uses multi-satellite technology (GPS, GLONASS, Galileo) to ensure the best possible accuracy.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Do I need special hardware to use TrackPro?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you'll need a GPS tracking device compatible with TrackPro. We offer various devices for different use cases: vehicle trackers, personal trackers, and asset trackers. You can purchase devices from our online store or use compatible third-party devices. Contact our sales team for device recommendations.</p>
+                    </div>
+                </div>
+
+                <!-- Tracking Questions -->
+                <div class="faq-item" data-category="tracking">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How often does the location update?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>TrackPro updates location data in real-time with intervals ranging from 1 second to 1 minute, depending on your plan and settings. Pro and Enterprise users can set update intervals as low as every 1 second for critical tracking needs. You can adjust the update frequency in your device settings.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="tracking">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>What is geofencing and how does it work?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Geofencing creates virtual boundaries around specific locations. When a tracked device enters or exits a geofenced area, you receive instant notifications via push notification, email, or SMS. You can create unlimited geofences with custom shapes (circle or polygon) and set different alert rules for each zone.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="tracking">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Can I track multiple devices simultaneously?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! TrackPro supports multiple device tracking on all plans. Basic plan includes 1 device, Pro plan supports up to 5 devices, and Enterprise plan offers unlimited devices. All devices are displayed on a single map dashboard with color-coded markers for easy identification.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="tracking">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Does TrackPro work internationally?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! TrackPro works in over 150 countries worldwide. Our GPS devices use global cellular networks and satellite systems, ensuring reliable tracking wherever your assets travel. International roaming rates may apply depending on your device and cellular plan.</p>
+                    </div>
+                </div>
+
+                <!-- Device Questions -->
+                <div class="faq-item" data-category="devices">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How long does the device battery last?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Battery life varies by device model and usage patterns. Typically, our devices last 7-30 days on a single charge. Vehicle trackers connected to car power can operate indefinitely. Personal trackers average 10-14 days. You'll receive low battery alerts when the charge drops below 20%.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="devices">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How do I install a GPS tracker in my vehicle?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Installation depends on the device type. Plug-and-play OBD-II trackers simply connect to your vehicle's OBD port (usually under the steering wheel). Hardwired trackers require professional installation. Personal trackers need no installation. Each device comes with detailed instructions, and our support team is available 24/7 to help.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="devices">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Are the GPS trackers waterproof?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most of our trackers have IP67 water resistance rating, meaning they can withstand rain, splashes, and brief submersion up to 1 meter for 30 minutes. For marine or extreme weather applications, we offer IP68-rated devices with enhanced waterproofing. Check individual product specifications for details.</p>
+                    </div>
+                </div>
+
+                <!-- Billing Questions -->
+                <div class="faq-item" data-category="billing">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>What payment methods do you accept?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards (Visa, Mastercard, American Express, Discover), PayPal, bank transfers, and cryptocurrency for Enterprise plans. All payments are securely processed through industry-leading payment processors with PCI DSS compliance.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="billing">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Can I cancel my subscription anytime?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can cancel your subscription at any time with no cancellation fees or penalties. If you cancel, you'll retain access to your account until the end of your current billing period. You can reactivate your subscription anytime, and all your historical data will be preserved.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="billing">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Do you offer refunds?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 30-day money-back guarantee on all plans. If you're not satisfied with TrackPro within the first 30 days, contact our support team for a full refund. Hardware purchases may have different return policies - please check our Returns Policy for details.</p>
+                    </div>
+                </div>
+
+                <!-- Technical Questions -->
+                <div class="faq-item" data-category="technical">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Is my data secure and private?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. TrackPro uses bank-level 256-bit SSL encryption for all data transmission. Your location data is stored on secure, redundant servers with multiple backups. We never sell or share your data with third parties. Our platform is GDPR compliant and SOC 2 Type II certified.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="technical">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Does TrackPro have a mobile app?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! TrackPro offers native mobile apps for iOS (iPhone/iPad) and Android devices. The apps provide full functionality including real-time tracking, alerts, geofencing, and route playback. Download from the App Store or Google Play Store. The mobile apps sync seamlessly with the web dashboard.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="technical">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Can I integrate TrackPro with my existing software?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! TrackPro provides a comprehensive REST API for integration with your applications. We offer SDKs for JavaScript, Python, PHP, and Java. Enterprise customers can also use webhooks for real-time event notifications. Full API documentation is available in your dashboard.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="technical">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>What happens if I lose internet connection?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>GPS devices store location data locally when cellular connection is lost. Once connection is restored, all buffered data is automatically uploaded to your account. This ensures no tracking data is lost during connectivity gaps. Devices can typically store 7-14 days of offline data.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="technical">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How do I export my tracking data?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can export your tracking data in multiple formats including CSV, Excel, JSON, and PDF. Go to Settings > Advanced > Data Export and select your preferred format and date range. Enterprise users can also schedule automatic exports via API or webhook integration.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Still Have Questions -->
+            <div class="faq-cta">
+                <h2>Still Have Questions?</h2>
+                <p>Can't find the answer you're looking for? Our support team is here to help!</p>
+                <div class="faq-cta-actions">
+                    <a href="contact.html" class="btn-primary">
+                        <i class="fas fa-envelope"></i> Contact Support
+                    </a>
+                    <button class="btn-secondary" onclick="toggleChat()">
+                        <i class="fas fa-comment-dots"></i> Chat with Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="assets/images/logo1.png" alt="TrackPro">
+                    <span>TrackPro</span>
+                </div>
+                <p>Advanced GPS tracking solutions for vehicles, assets, and people. Real-time monitoring with AI-powered intelligence.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="devices.html">Devices</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Features</h3>
+                <ul>
+                    <li><a href="index.html#features">Real-Time Tracking</a></li>
+                    <li><a href="index.html#features">Geofencing</a></li>
+                    <li><a href="index.html#features">Route History</a></li>
+                    <li><a href="index.html#features">AI Alerts</a></li>
+                    <li><a href="index.html#features">Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="faq.html">Help Center</a></li>
+                    <li><a href="api.html">Documentation</a></li>
+                    <li><a href="api.html">API Reference</a></li>
+                    <li><a href="system-status.html">System Status</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <p>&copy; 2025 TrackPro GPS Tracking System. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy.html">Privacy</a>
+                <span>•</span>
+                <a href="terms.html">Terms</a>
+                <span>•</span>
+                <a href="cookies.html">Cookies</a>
+                <span>•</span>
+                <a href="sitemap.html">Sitemap</a>
+            </div>
+        </div>
+    </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>TrackBot Assistant</span>
+            </div>
+            <button class="chatbot-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="bot-message">
+                <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                <div class="message-content">
+                    <p>Hi! I'm here to help answer your questions. What would you like to know?</p>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chat-input"></label><input type="text" id="chat-input" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" onclick="toggleChat()">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+    <script>
+        // FAQ Toggle Function
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = element.querySelector('i');
+
+            // Close all other FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-answer').style.maxHeight = '0';
+                    item.querySelector('.faq-question i').classList.remove('fa-chevron-up');
+                    item.querySelector('.faq-question i').classList.add('fa-chevron-down');
+                }
+            });
+
+            // Toggle current FAQ
+            faqItem.classList.toggle('active');
+            if (faqItem.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                answer.style.maxHeight = '0';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+
+        // Search FAQ
+        function searchFAQ() {
+            const searchTerm = document.getElementById('faq-search-input').value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question h3').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Filter by Category
+        function filterCategory(category) {
+            const faqItems = document.querySelectorAll('.faq-item');
+            const buttons = document.querySelectorAll('.faq-category-btn');
+
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filter items
+            faqItems.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

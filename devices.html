@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devices - TrackPro GPS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.png" alt="TrackPro Logo">
+                <span>TrackPro</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="devices.html" class="active">Devices</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="alerts.html">Alerts</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="user-profile">
+                    <img src="assets/images/gps-icon.png" alt="User">
+                    <span>Akash Vimal</span>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-microchip"></i> Device Management</h1>
+            <p>Manage all your GPS tracking devices in one place</p>
+        </div>
+    </section>
+
+    <!-- Devices Section -->
+    <section class="devices-section">
+        <div class="container">
+            <div class="devices-header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <label for="device-search"></label><input type="text" placeholder="Search devices..." id="device-search">
+                </div>
+                <button class="btn-primary" onclick="openAddDeviceModal()">
+                    <i class="fas fa-plus"></i> Add New Device
+                </button>
+            </div>
+
+            <div class="devices-grid">
+                <!-- Device Card 1 -->
+                <div class="device-card">
+                    <div class="device-card-header">
+                        <div class="device-type">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="device-status-badge online">Online</div>
+                    </div>
+                    <h3>Tesla Model 3</h3>
+                    <p class="device-id">ID: TRK-2024-001</p>
+                    <div class="device-stats">
+                        <div class="device-stat">
+                            <i class="fas fa-battery-three-quarters"></i>
+                            <span>Battery: 85%</span>
+                        </div>
+                        <div class="device-stat">
+                            <i class="fas fa-signal"></i>
+                            <span>Signal: Strong</span>
+                        </div>
+                        <div class="device-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Last Update: 2m ago</span>
+                        </div>
+                    </div>
+                    <div class="device-location">
+                        <i class="fas fa-location-dot"></i>
+                        <span>1234 Main St, San Francisco, CA</span>
+                    </div>
+                    <div class="device-actions">
+                        <button class="btn-action" onclick="trackDevice('device1')"><i class="fas fa-map"></i> Track</button>
+                        <button class="btn-action" onclick="editDevice('device1')"><i class="fas fa-edit"></i> Edit</button>
+                        <button class="btn-action danger" onclick="deleteDevice('device1')"><i class="fas fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+
+                <!-- Device Card 2 -->
+                <div class="device-card">
+                    <div class="device-card-header">
+                        <div class="device-type">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="device-status-badge online">Online</div>
+                    </div>
+                    <h3>Delivery Van #12</h3>
+                    <p class="device-id">ID: TRK-2024-002</p>
+                    <div class="device-stats">
+                        <div class="device-stat">
+                            <i class="fas fa-battery-full"></i>
+                            <span>Battery: 92%</span>
+                        </div>
+                        <div class="device-stat">
+                            <i class="fas fa-signal"></i>
+                            <span>Signal: Excellent</span>
+                        </div>
+                        <div class="device-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Last Update: 5m ago</span>
+                        </div>
+                    </div>
+                    <div class="device-location">
+                        <i class="fas fa-location-dot"></i>
+                        <span>789 Oak Ave, Los Angeles, CA</span>
+                    </div>
+                    <div class="device-actions">
+                        <button class="btn-action" onclick="trackDevice('device2')"><i class="fas fa-map"></i> Track</button>
+                        <button class="btn-action" onclick="editDevice('device2')"><i class="fas fa-edit"></i> Edit</button>
+                        <button class="btn-action danger" onclick="deleteDevice('device2')"><i class="fas fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+
+                <!-- Device Card 3 -->
+                <div class="device-card">
+                    <div class="device-card-header">
+                        <div class="device-type">
+                            <i class="fas fa-motorcycle"></i>
+                        </div>
+                        <div class="device-status-badge online">Online</div>
+                    </div>
+                    <h3>Yamaha R15</h3>
+                    <p class="device-id">ID: TRK-2024-003</p>
+                    <div class="device-stats">
+                        <div class="device-stat">
+                            <i class="fas fa-battery-half"></i>
+                            <span>Battery: 58%</span>
+                        </div>
+                        <div class="device-stat">
+                            <i class="fas fa-signal"></i>
+                            <span>Signal: Good</span>
+                        </div>
+                        <div class="device-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Last Update: 10m ago</span>
+                        </div>
+                    </div>
+                    <div class="device-location">
+                        <i class="fas fa-location-dot"></i>
+                        <span>456 Park Blvd, San Diego, CA</span>
+                    </div>
+                    <div class="device-actions">
+                        <button class="btn-action" onclick="trackDevice('device3')"><i class="fas fa-map"></i> Track</button>
+                        <button class="btn-action" onclick="editDevice('device3')"><i class="fas fa-edit"></i> Edit</button>
+                        <button class="btn-action danger" onclick="deleteDevice('device3')"><i class="fas fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+
+                <!-- Device Card 4 -->
+                <div class="device-card">
+                    <div class="device-card-header">
+                        <div class="device-type">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="device-status-badge offline">Offline</div>
+                    </div>
+                    <h3>Personal Tracker</h3>
+                    <p class="device-id">ID: TRK-2024-004</p>
+                    <div class="device-stats">
+                        <div class="device-stat">
+                            <i class="fas fa-battery-quarter"></i>
+                            <span>Battery: 18%</span>
+                        </div>
+                        <div class="device-stat">
+                            <i class="fas fa-signal"></i>
+                            <span>Signal: Weak</span>
+                        </div>
+                        <div class="device-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Last Update: 2h ago</span>
+                        </div>
+                    </div>
+                    <div class="device-location">
+                        <i class="fas fa-location-dot"></i>
+                        <span>321 Beach Rd, Miami, FL</span>
+                    </div>
+                    <div class="device-actions">
+                        <button class="btn-action" onclick="trackDevice('device4')"><i class="fas fa-map"></i> Track</button>
+                        <button class="btn-action" onclick="editDevice('device4')"><i class="fas fa-edit"></i> Edit</button>
+                        <button class="btn-action danger" onclick="deleteDevice('device4')"><i class="fas fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+
+                <!-- Add Device Card -->
+                <div class="device-card add-device" onclick="openAddDeviceModal()">
+                    <div class="add-device-content">
+                        <i class="fas fa-plus-circle"></i>
+                        <h3>Add New Device</h3>
+                        <p>Click to register a new GPS tracker</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="assets/images/logo1.png" alt="TrackPro">
+                    <span>TrackPro</span>
+                </div>
+                <p>Advanced GPS tracking solutions for vehicles, assets, and people. Real-time monitoring with AI-powered intelligence.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="devices.html">Devices</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Features</h3>
+                <ul>
+                    <li><a href="index.html#features">Real-Time Tracking</a></li>
+                    <li><a href="index.html#features">Geofencing</a></li>
+                    <li><a href="index.html#features">Route History</a></li>
+                    <li><a href="index.html#features">AI Alerts</a></li>
+                    <li><a href="index.html#features">Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="faq.html">Help Center</a></li>
+                    <li><a href="api.html">Documentation</a></li>
+                    <li><a href="api.html">API Reference</a></li>
+                    <li><a href="system-status.html">System Status</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <p>&copy; 2025 TrackPro GPS Tracking System. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy.html">Privacy</a>
+                <span>•</span>
+                <a href="terms.html">Terms</a>
+                <span>•</span>
+                <a href="cookies.html">Cookies</a>
+                <span>•</span>
+                <a href="sitemap.html">Sitemap</a>
+            </div>
+        </div>
+    </div>
+    </footer>
+
+    <!-- Add Device Modal -->
+    <div class="modal" id="add-device-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeAddDeviceModal()">&times;</span>
+            <h2>Add New Device</h2>
+            <form class="device-form">
+                <div class="form-group">
+                    <label>Device Name</label>
+                    <label>
+                        <input type="text" placeholder="e.g., My Car" required>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Device Type</label>
+                    <label>
+                        <select required>
+                            <option value="">Select Type</option>
+                            <option value="vehicle">Vehicle</option>
+                            <option value="personal">Personal</option>
+                            <option value="asset">Asset</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Device ID / IMEI</label>
+                    <label>
+                        <input type="text" placeholder="Enter device ID" required>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <label>
+                        <textarea placeholder="Optional description"></textarea>
+                    </label>
+                </div>
+                <button type="submit" class="btn-submit">Add Device</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>TrackBot Assistant</span>
+            </div>
+            <button class="chatbot-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="bot-message">
+                <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                <div class="message-content">
+                    <p>Need help managing your devices? I'm here to assist!</p>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chat-input"></label><input type="text" id="chat-input" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" onclick="toggleChat()">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+</body>
+</html>
