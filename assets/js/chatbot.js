@@ -32,27 +32,47 @@ const ChatbotState = {
    DOM helpers
 --------------------------- */
 function $(sel) {
-  return document.querySelector(sel);
+  try {
+    return document.querySelector(sel);
+  } catch (e) {
+    console.error('Error selecting element:', sel, e);
+    return null;
+  }
 }
 function append(el, html) {
-  el.insertAdjacentHTML('beforeend', html);
+  try {
+    if (el) {
+      el.insertAdjacentHTML('beforeend', html);
+    }
+  } catch (e) {
+    console.error('Error appending HTML:', e);
+  }
 }
 function nowTime() {
-  return new Date().toLocaleTimeString(ChatbotConfig.locale, {
-    hour: '2-digit',
-    minute: '2-digit'
-  });
+  try {
+    return new Date().toLocaleTimeString(ChatbotConfig.locale, {
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  } catch (e) {
+    console.error('Error getting time:', e);
+    return new Date().toLocaleTimeString();
+  }
 }
 function scrollMessagesToEnd() {
-  const box = $('#chatbot-messages');
-  if (!box) return;
-  setTimeout(() => (box.scrollTop = box.scrollHeight), 50);
+  try {
+    const box = $('#chatbot-messages');
+    if (!box) return;
+    setTimeout(() => (box.scrollTop = box.scrollHeight), 50);
+  } catch (e) {
+    console.error('Error scrolling to end:', e);
+  }
 }
 
 /* ---------------------------
    Init
 --------------------------- */
-document.addEventListener('DOMContentLoaded', () => {
+function initializeChatbot() {
   // Boot greeting on first load
   if ($('#chatbot-messages') && !$('#chatbot-messages').dataset.booted) {
     botMessage(ChatbotConfig.greeting);
@@ -85,6 +105,46 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       tgl.style.animation = 'bounce 1s ease 2';
     }, 3000);
+  }
+}
+
+// Initialize chatbot when DOM is loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    // Ensure chatbot DOM elements exist before initializing
+    if ($('#chatbot') && $('#chatbot-messages')) {
+      initializeChatbot();
+    } else {
+      console.warn('Chatbot DOM elements not found, attempting delayed initialization...');
+      // Retry initialization after a short delay to handle dynamic content
+      setTimeout(() => {
+        if ($('#chatbot') && $('#chatbot-messages')) {
+          initializeChatbot();
+        }
+      }, 500);
+    }
+  });
+} else {
+  // DOM is already loaded, initialize immediately if elements exist
+  if ($('#chatbot') && $('#chatbot-messages')) {
+    initializeChatbot();
+  } else {
+    console.warn('Chatbot DOM elements not found, attempting delayed initialization...');
+    // Retry initialization after a short delay to handle dynamic content
+    setTimeout(() => {
+      if ($('#chatbot') && $('#chatbot-messages')) {
+        initializeChatbot();
+      }
+    }, 500);
+  }
+}
+
+// Also initialize if the chatbot elements are added dynamically
+window.addEventListener('load', () => {
+  // Check if chatbot elements exist and weren't initialized yet
+  if ($('#chatbot') && $('#chatbot-messages') && typeof ChatbotState !== 'undefined' && !window.chatbotInitialized) {
+    initializeChatbot();
+    window.chatbotInitialized = true;
   }
 });
 
@@ -369,12 +429,11 @@ function prefillAndSend(text) {
 function escapeAndLink(text) {
   const esc = text
     .replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]))
-    .replace(/**(.*?)**/g, '<strong>$1</strong>')
-    .replace(/*(.*?)*/g, '<em>$1</em>')
-    .replace(/
-/g, '<br>');
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\n/g, '<br>');
   return esc.replace(
-    /(https?://[^s<]+)/g,
+    /(https?:\/\/[^\s<]+)/g,
     '<a href="$1" target="_blank" rel="noopener">$1</a>'
   );
 }
